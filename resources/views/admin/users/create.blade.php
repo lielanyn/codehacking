@@ -1,10 +1,12 @@
-@extends('layouts.admin')
+ @extends('layouts.admin')
 
 @section('content')
 
 	<h1>Create Users</h1>
 
-	{!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store']) !!}
+	{!! Form::open(array('method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=> true)) !!}
+
+	{{ csrf_field() }}
 
 	<div class="form-group">
 		{!! Form::label('name', 'Name:') !!}
@@ -27,8 +29,8 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('file', 'Status:') !!}
-		{!! Form::file('file', null, ['class'=>'form-control']) !!}
+		{!! Form::label('photo_id', 'Photo:') !!}
+		{!! Form::file ('photo_id', null, ['class'=>'form-control']) !!}
 	</div>
 
 	<div class="form-group">

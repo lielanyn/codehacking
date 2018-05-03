@@ -24,3 +24,6 @@ Route::get('/admin', function() {
 });
 
 Route::resource('admin/users', 'AdminUsersController');
+
+Route::get('view', ['as'=> 'view', 'uses'=>'AdminUsersController@index']);
+Route::get('create', ['as'=> 'create', 'uses'=>'AdminUsersController@create']);
