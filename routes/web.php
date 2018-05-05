@@ -22,10 +22,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', function() {
 	return view('admin.index');
 });
-
+//ADMIN-USER
 Route::resource('admin/users', 'AdminUsersController');
 
 Route::get('view', ['as'=> 'view', 'uses'=>'AdminUsersController@index']);
 Route::get('create', ['as'=> 'create', 'uses'=>'AdminUsersController@create']);
 
 Route::get('/users/edit/{id}', 'AdminUsersController@edit');
+
+Route::group(['middleware'=>'admin'], function() {
+
+	Route::resource('admin/users', 'AdminUsersController');
+	Route::resource('admin/posts', 'AdminPostsController');
+});
+//POST
+
+Route::resource('admin/posts', 'AdminPostsController');
+Route::get('postview', ['as'=> 'postview', 'uses'=>'AdminPostsController@index']);
+Route::get('postcreate', ['as'=> 'postcreate', 'uses'=>'AdminPostsController@create']);
+
+Route::get('/posts/edit/{id}', 'AdminPostsController@edit');

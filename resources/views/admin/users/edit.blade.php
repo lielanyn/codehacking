@@ -6,7 +6,7 @@
 
 	<div class="col-sm-3">
 
-		<img src="{{$user->photo->file}}" class="img-responsive img-rounded">
+		<img src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}" class="img-responsive img-rounded">
 
 	</div>
 
@@ -28,7 +28,7 @@
 
 		<div class="form-group">
 			{!! Form::label('role_id', 'Role:') !!}
-			{!! Form::select('role_id', $roles, null , ['class'=>'form-control']) !!}
+			{!! Form::select('role_id', $roles , ['class'=>'form-control']) !!}
 		</div>
 
 		<div class="form-group">
@@ -47,7 +47,16 @@
 		</div>
 
 		<div class="form-group">
-			{!! Form::submit('Create User', null, ['class'=>'btn btn-primary']) !!}
+			{!! Form::submit('Update User', null, ['class'=>'btn btn-primary']) !!}
+		</div>
+
+	{!! Form::close() !!}
+
+
+	{!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+
+		<div class="form-group">
+			{!! Form::submit('Delete User', null, ['class'=>'btn btn-danger col-sm-6']) !!}
 		</div>
 
 	{!! Form::close() !!}

@@ -20,5 +20,8 @@
         "popper.js": "^1.12",
         "vue": "^2.5.7"
     },
-    "dependencies": {}
+    "dependencies": {
+        "bootstrap-sass": "^3.3.7",
+        "bootstrap": "latest"
+    }
 }
